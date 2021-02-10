@@ -1,0 +1,102 @@
+        /*Intento de hacer un sidebar en nuestro blog*/
+        
+        .wrapper {
+            display: flex;
+            text-decoration: none;
+            transition: all 0.3s;
+            /* Efecto demorado en el despliegue del menú */
+        }
+        
+        #sidebar {
+            min-width: 20rem;
+            max-width: 15rem;
+            background: #bebebe;
+            color: #000000;
+            transition: all 0.3s;
+            /* Efecto demorado en el despliegue del menú */
+        }
+        
+        #sidebar .active {
+            margin-left: 0;
+        }
+        
+        #sidebar .sidebar-header {
+            padding-bottom: 2rem;
+            background: #f3f3f3;
+        }
+        
+        #sidebar ul.components {
+            padding: 2rem 0;
+            border-bottom: 1px solid #000000;
+        }
+        
+        #sidebar ul p {
+            color: #000000;
+            padding: 1rem;
+            font-size: 2rem;
+        }
+        
+        #sidebar ul li a {
+            padding: 0.8rem;
+            font-size: 1.4em;
+            display: block;
+        }
+        
+        #sidebar ul li a:hover {
+            color: #7386d5;
+            background: #fff;
+        }
+        
+        #sidebar ul li.active>a,
+        a[aria-expanded="true"] {
+            color: #000000;
+            background: #bebebe;
+        }
+        
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+        
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 20%;
+            transform: translateY(-50%);
+        }
+        
+        ul ul a {
+            font-size: 1.2rem!important;
+            font-style: oblique;
+            padding-left: 30px !important;
+            background: #bebebe;
+        }
+        
+        #content {
+            width: 100%;
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3%;
+        }
+        
+        @media (max-width:768px) {
+            #sidebar {
+                margin-left: -250;
+            }
+        }
+        
+        #sidebar.active {
+            margin-left: -250;
+        }
+        
+        a,
+        a:hover,
+        a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .lisst-unstyled {
+            list-style: none;
+        }

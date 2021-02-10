@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <title>contacto gnExpress</title>
+    
+     <!--   Normalizando Documento para que se vea en todo dispositivo-->
+    <link rel="stylesheet" th:href="@{/css/normalize.css}"/>
+  	<link rel="stylesheet" th:href="@{/css/stiles.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontello.css}"/>
+
+    <!--   Estableciendo fuentes a todo el documento (buscado en google fonts)-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <!--  font-family: 'Titillium Web', sans-serif;  -->
+
+    
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <!-- <img src="img/logo1.png" class="logo-brand" alt="logotipo de bienes raíces"> -->
+            <div class="logoExpress">
+                <a class="navbar-brand" href="/"> <img th:src="@{/img/logo.png}" class="logo-brand" alt="logotipo de bienes raíces"/> </a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <ion-icon name="menu-outline"></ion-icon>
+             </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/" id="Inicio">Inicio</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <b><b>SERVICIOS</b></b>
+             		 </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           
+                            <div th:each="servicio1 : ${serv_gnExpress}">                          
+                                                     
+                            <a class="dropdown-item" th:href="@{subservicios(id_Servicio=${servicio1.id}, nombre_Servicio=${servicio1.nombre})}"><p th:text="${servicio1.nombre}"></p></a>
+                            
+                            </div>
+                            
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="contactos">Contactanos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{blog_todos}" id="anuncios">NuestroBlog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{testimoniales}" id="anuncios">Testimoniales</a>
+                    </li>                    
+
+                    <li class="nav-item">
+                          <a class="nav-link" th:href="@{login}" id="administre">administre</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <header>
+        <div class="site-header-contacto">
+
+        </div>
+    </header>
+
+
+    <main class=" borde-inferior marginbotton-add margin-top-negativo">
+
+        <div class="contenedor-reducido3" style="margin: 0 auto;"><br>
+            <div class="card marginbotton-add">
+                <div class="card-header">
+                    <div class="encabezado-centro">
+
+
+
+                        <h3 class="card-title font-italic"> <i class="icon-address-card-o"></i>Envíanos tus datos y un asesor se pondrá en contacto contigo</h3><br>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                
+                
+                    <div class="form-contacto">
+                    
+                 
+                    	<form th:action="@{crea_contacto}" th:object="${cont}" method="post">
+						
+					<fieldset>
+							
+								<label for="nombre">nombre</label>
+								<input type="text" th:field="*{nombre}" name="nombre" id="nombre" placeholder="nombre">							
+								<small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small> <br><br>
+							
+								<label for="correo">E-mail</label>
+								<input  type="email" th:field="*{correo}" name="correo" placeholder="Tu correo">
+								<small th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></small> <br><br>
+								
+								<label for="telefono">Telefono</label>
+								<input type="tel" th:field="*{telefono}" name="telefono" placeholder="Tu telefono o watsapp">
+								<small th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small> <br><br>
+								
+								
+								<label for="msje">Mensaje</label>
+								<textarea th:field="*{msje}" name="msje" cols="60" rows="20" placeholder="Escribe tu mensaje"></textarea>
+								<small th:if="${#fields.hasErrors('msje')}" th:errors="*{msje}"></small> <br><br>
+					
+					</fieldset>
+								
+								
+							<div class="boton-contacto">
+								<input type="submit" name="enviar" value="enviar">
+							</div>		
+						
+						</form>
+
+						
+
+
+					</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+    <footer class="footerWidth ">
+        <div class="container-fluid">
+            <div class="footer-align font-italic ">
+
+                <div class="contacto-footer">
+                    <div class="encabezado-footer ">
+                        <p class="text-uppercase ">contacto directo EquipoTuObra</p>
+                    </div>
+                    <div class="datos-gn">
+                        <p><i class="icon-mail"></i>:  <span th:text="${gnExpress.correo}"></span></p>                        
+                        <p><i class="icon-volume-control-phone"></i>:  <span th:text="${gnExpress.telefono}"></span></p>
+                        <p><i class="icon-mobile"></i>:  <span th:text="${gnExpress.movil}"></span></p>
+                    </div>
+                </div>
+
+                <div class="nav-footer">
+                    <nav class="align-nav-footer">
+                       <a class="nav-link" th:href="@{/}" id="Inicio">Inicio</a>
+                       
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                          </a>
+                        <div class="dropdown-menu">
+                        
+                              <div th:each="servicio1 : ${serv_gnExpress}">                          
+                                                     
+                        		<a class="dropdown-item" th:href="@{subservicios(id_Servicio=${servicio1.id})}" th:text="${servicio1.nombre}"></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <a class="nav-link" href="#" id="Contactanos">Contactanos</a>
+                        <a class="nav-link" th:href="@{blog_todos}" id="anuncios">NuestroBlog</a>
+                        <a class="nav-link" th:href="@{testimoniales}" id="testim">Testimoniales</a>
+
+                       
+
+                        <a href="#"> <a class="nav-link" href="#" id="Administre">Administre</a></a>
+                    </nav>
+                </div>
+                <div class="last-element">
+                    <div class="logo-footer">
+                        <a href="#">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                       <a th:href="${gnExpress.twitter}">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+
+                    </div>
+
+                    <div class="derechos">
+                        <p class="copyright ">Todos los derechos reservados <span th:text="${fechaFoot}"> </span>&copy; </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+	<script th:src="@{/js/formulario.js}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js "></script>
+</body>
+
+				
+
+</html>

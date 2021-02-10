@@ -1,0 +1,263 @@
+@import "http://fonts.googleapis.com/css?family=poppins:300, 400, 500, 600, 700";
+body {
+    font-family: 'poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none!important;
+    border: none;
+}
+
+line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+}
+
+
+/* Sidebar*/
+
+.wrapper {
+    display: flex;
+    width: 100%;
+ 
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    /*background: #7386d5;*/
+    background: #363636;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    /* background: #6d7fcc;*/
+  background: #17727e;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    /*  border-bottom: 1px solid #47748b; */
+    border-bottom: 1px solid #9fb4be;
+}
+
+#sidebar ul p {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    /*Este es el color del texto  de los menus todos cuando se le pone el mouse arriba*/
+    /*color: #7386d5;*/
+    color: #686767;
+    /*Este es el fondo del texto  de los menus todos cuando se le pone el mouse arriba*/
+    background: #fff;
+}
+
+#sidebar ul li.acive>a,
+a[aria-expanded="true"] {
+    /*Este es el color de las letras de los desplegables (solo en ellos)*/
+    color: #fff;
+    /*Este es el color del fondo de los desplegables (solo en ellos)*/
+    /*background: #6d7fcc;*/
+    *background: #686767;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle:after {
+    display: block;
+    position: absolute;
+    top: 60%;
+    right: 20%;
+    transform: translateY(-50%)
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 35px !important;
+    /* background: #6d7fcc;*/
+    background: #363636;
+}
+
+ul.CTAs {
+    padding: 20x;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    /* color: #7386d5;*/
+    color: #0c0c0c;
+}
+
+a.article,
+article:hover {
+    background: #535353 !important;
+    color: #fff !important;
+}
+
+.content {       
+    transition: all 0.3s;
+}
+
+@media(max-width:768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0px;
+    }
+    #sidebar.Collapse span {
+        display: none;
+    }
+}
+
+
+/*Esto lo cambié yo*/
+
+.lisst-unstyled {
+    padding-left: 0;
+}
+
+.cuerpo {
+    margin: 0 3rem;
+    
+}
+
+
+/*
+.cuerpo p {
+    text-align: justify;
+}
+
+*/
+
+
+/* ---------------  Seccion Admin -------------------------------*/
+
+table th{
+	
+	font-size: 1.5rem;	
+	 color:#000000;
+   
+}
+
+table td{	
+	font-size: 1.5rem;	
+	
+	
+}
+
+table td:nth-child(6) {
+  text-align: center;
+}
+
+table td:nth-child(7) {
+  text-align: center;
+}
+
+table td:nth-child(5) {
+ min-width: 9rem;
+}
+
+table td:nth-child(4) {
+  min-width: 25rem;
+}
+
+table td:nth-child(1) {
+  min-width: 13rem;
+}
+
+table td:nth-child(2) {
+  min-width: 13rem;
+}
+
+table td:nth-child(3) {
+  min-width: 9rem;
+}
+
+.container td{
+	
+	font-size: 1.2rem;	
+}
+
+
+.container th{
+	
+	font-size: 1.2rem;	
+}
+
+.tabla1 td{
+	text-align: center;
+	padding: 0;
+}
+
+
+
+.navegacion{
+	
+	 min-width: 84rem;
+}	
+
+
+form input{
+	
+	display: flex;
+	margin: 3rem auto;
+}
+
+
+
+ 

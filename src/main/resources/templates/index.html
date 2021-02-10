@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <title>Equipo tu obra Servicios tecnicos y especializados</title>
+    
+    <!--  Normalizando Documento para que se vea en todo dispositivo-->
+    <link rel="stylesheet" th:href="@{/css/normalize.css}"/>
+  	<link rel="stylesheet" th:href="@{/css/stiles.css}"/>
+    <link rel="stylesheet" th:href="@{css/fontello.css}"/>
+
+    <!--   Estableciendo fuentes a todo el documento (buscado en google fonts)-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap" rel="stylesheet"/>
+    <!--  font-family: 'Titillium Web', sans-serif;  -->
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <!-- <img src="img/logo1.png" class="logo-brand" alt="logotipo de bienes raíces"> -->
+            <div class="logoExpress">
+                <a class="navbar-brand" href="/"> <img th:src="@{/img/logo.png}" class="logo-brand" alt="logotipo de bienes raíces"/> </a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <ion-icon name="menu-outline"></ion-icon>
+             </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}" id="Inicio">Inicio</a>
+                    </li>
+                    
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+               <b><b>SERVICIOS</b></b>
+                
+              </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        
+                           
+                           <div th:each="servicio1 : ${serv_gnExpress}">                          
+                                                     
+                        <a class="dropdown-item" th:href="@{gnExpress/subservicios(id_Servicio=${servicio1.id})}"><p th:text="${servicio1.nombre}"></p></a>
+                            
+                            </div>
+                            
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{gnExpress/contacto}" id="contactos">Contactanos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{gnExpress/blog_todos}" id="anuncios">NuestroBlog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{gnExpress/testimoniales}" id="testim">Testimoniales</a>
+                    </li>
+
+                   
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{gnExpress/login}" id="administre">administre</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <header>
+        <div class="site-header inicio">
+            <!--
+        <a href="#navegacion">
+            <img src="img/barras.svg" alt="logotipo de bienes raíces">
+        </a>
+    -->
+            <div class="container contenido-header">
+                <div class="content-center">
+                    <h1 th:text="${gnExpress.public1}"></h1>
+                </div>
+                <div class="content-center">
+                    <p th:text="${gnExpress.public2}">  
+                    </p>
+                    
+                </div>
+                <h4 th:text="${gnExpress.public3}">
+                    </h4>
+                <div class="content-center">
+                    <a th:href="@{gnExpress/contacto}" class="btn btn-blanco">contactanos </a>
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <main id="portfolio" class="margintop-reduce">
+        <div class="container">
+            <div class="content-center encabezado-secundario cuerpo">
+
+                <h2> <span class="text-muted">Servicios y</span> <b>asesoramiento</b></h2>
+                <p class="text-muted" th:text="${gnExpress.publicServ}">
+                </p>
+            </div>      
+            			
+            <div class="row">              
+                                          
+                <div class="col-md-6" th:each="servicio2 : ${serv_gnExpress}">
+                                 
+                    <div class="portfolio-container">   
+                                         
+                        <div class="portfolio-details">        
+                          
+                            <a th:href="@{gnExpress/subservicios(id_Servicio=${servicio2.id})}">                            
+                                <h2 th:text="${servicio2.nombre}"></h2>                                
+                                                             
+                            </a>
+                                                     
+                            
+                        </div>                        
+
+                        <a th:href="@{gnExpress/subservicios(id_Servicio=${servicio2.id})}">
+                        
+                            <img th:src="@{${'/img/'+ servicio2.foto}}" alt="piscina">
+                            
+                        </a>                                                   
+                        </div>      
+                    </div>
+                   
+                              
+
+            </div>
+
+            <div class="pie-pagina">
+                <div class="text-center margintop-sm">
+                    <p class="text-muted">Listo para acelerar tus proyectos</p>
+                    <a th:href="@{gnExpress/contacto}">contactanos</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+             
+    <section class="bg-light-grey margintop-reduce">
+
+        <div class="container">
+
+            <div class="content-center encabezado-secundario">
+                <h2> <span class="text-muted">Conoce sobre nosotros</span></h2>
+                <p class="text-muted">
+                </p>
+            </div>
+
+            <!--esta es la clave para flotar un texto sobre una imagen-->
+            <div class="float-text">
+                <div class="entrada-blog nosotros">
+                    <img th:src="@{/img/nosotros.jpg}" alt="nosotros">
+                    <p><strong th:text=${gnExpress.nombre}></strong> <span class="text-muted" th:text=${gnExpress.historia}></span>
+                    </p>
+                </div>
+
+
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+
+    <section class="margintop-reduce divider">
+
+        <div class="container marginbotton-add">
+            <div class="content-center encabezado-secundario">
+                <h2> <span class="text-muted" th:text="${gnExpress.encabezadoDepTecnico}"></span></h2>
+                <p class="text-muted" th:text="${gnExpress.publicDepTecnico}">
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4" th:each="jefes : ${jefes_gnExpress}">
+                    <div class="aply-flex">
+                        <div class="direccion">
+                            <img th:src="@{${'/img/'+ jefes.foto}}" alt="fotos">
+                        </div>
+                        <div class="datos">
+                            <ul>
+                                <li>
+                                    <h4 th:text=${jefes.nombre}></h4>
+
+                                </li>
+                                <li>
+                                	<div class="cargo">
+                                    <span th:text=${jefes.cargo}></span>
+                                    </div>
+                                   
+                                </li>
+                                <li>
+                                    <i class="icon-whatsapp row"><p th:text=${jefes.watsapp}></p></i>                                    
+                                </li>
+                                <li class="list-inline-items">
+                                    <a th:href="${jefes.facebook}">
+                                        <ion-icon name="logo-facebook"></ion-icon>
+                                    </a>
+                                    <a th:href="${jefes.twitter}">
+                                        <ion-icon name="logo-twitter"></ion-icon>
+                                    </a>
+                                    <a th:href="${jefes.instagram}">
+                                        <ion-icon name="logo-instagram"></ion-icon>
+                                    </a>
+                                    <a th:href="${jefes.youtube}">
+                                        <ion-icon name="logo-youtube"></ion-icon>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="testimoniales" class="bg-light-grey margintop-reduce divider">
+        <div class="container">
+
+            <div class="content-center encabezado-secundario">
+                <h2> <span class="text-muted">Palabras de</span><b> nuestros clientes</b></h2>
+                <p class="text-muted" th:text="${gnExpress.publicClientesTestimoniales}">
+                </p>
+            </div>
+
+            <!--  Esto es lo que vendría siendo un carousel en bootstrap 4-->
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <div class="carousel-container">
+
+                            <p class="text-muted" th:text="${testimonial_gnExpress.testimonial}"></p>
+                            <div class="rating">
+                                <ul class="list-inline">
+                                   <li class="list-inline-items">
+                                        <ion-icon name="star" id="1estrella2"></ion-icon>
+                                    </li>
+                                    <li class="list-inline-items">
+                                        <ion-icon name="star" id="2estrella2"></ion-icon>
+                                    </li>
+                                    <li class="list-inline-items">
+                                        <ion-icon name="star" id="3estrella2"></ion-icon>
+                                    </li>
+                                    <li class="list-inline-items">
+                                        <ion-icon name="star" id="4estrella2"></ion-icon>
+                                    </li>
+                                    <li class="list-inline-items">
+                                        <ion-icon name="star" id="5estrella2"></ion-icon>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="testimonial-user">
+                                <div class="row alineacion">
+                                    <div class="icon-user">
+                                        <i class="icon-user-circle-o"></i>
+                                    </div>
+                                    <div class="">
+                                        <p th:text="${testimonial_gnExpress.autor}"></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" th:each=" testim : ${testimoniales_gnExpress}">
+                        <div class="carousel-container">
+
+                            <p class="text-muted" th:text="${testim.testimonial}"></p>
+                            <div class="rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-items">
+                                        <ion-icon name="star" th:id="${'1'+testim.id}"></ion-icon>
+                                    </li>
+                                   <li class="list-inline-items">
+                                        <ion-icon name="star" th:id="${'2'+testim.id}"></ion-icon>
+                                    </li>
+                                    <li class="list-inline-items">
+                                        <ion-icon name="star" th:id="${'3'+testim.id}"></ion-icon>
+                                    </li>
+                                    <li class="list-inline-items">
+                                        <ion-icon name="star" th:id="${'4'+testim.id}"></ion-icon>
+                                    </li>
+                                    <li class="list-inline-items">
+                                        <ion-icon name="star" th:id="${'5'+testim.id}"></ion-icon>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+<script>
+
+var rating2 = "[[${testim.porcentaje}]]";
+
+
+var i=0;
+
+
+while(i<5){
+	
+    if (i < rating2) {
+        document.getElementById((i + 1) + "[[${testim.id}]]").style.color = "orange";
+
+    } else {
+        document.getElementById((i + 1) + "[[${testim.id}]]").style.color = "black";
+    }
+	i++;
+}	
+	
+
+</script>                        
+                            
+                            
+                            
+
+                            <div class="testimonial-user">
+                                <div class="row alineacion">
+                                    <div class=" icon-user">
+                                        <i class="icon-user-circle-o"></i>
+                                    </div>
+                                    <div>
+                                        <p th:text="${testim.autor}"></p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>                    
+
+                </div>
+
+
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <div class="control-bottom">
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </div>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <div class="control-bottom">
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                </a>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="blog" class="margintop-reduce">
+        <div class="container">
+
+            <div class="content-center encabezado-secundario">
+                <h2> <span class="text-muted" th:text="${gnExpress.encabezadoBlog}"></span>
+                </h2>
+                <p class="text-muted" th:text="${gnExpress.publicidadBlog}">
+                </p>
+            </div>
+
+            <div class="leftmargin">
+            
+                <div class="row marginbotton-add" th:each="blog : ${blogs_gnExpress}">
+                    <div class="col-md-4">
+                        <div class="imagen">
+                            <img th:src="@{${'/img/'+ blog.foto}}" alt="Entrada de blog">
+                        </div>
+                    </div>
+                    <div class="col-md-6 borde-inferior">
+                        <div class="texto-entrada">
+                            <a href="#">
+                                <h4 th:text="${blog.titulo}"></h4>
+                            </a>
+                            <p>Escrito el: <span th:text="${blog.fecha}"></span> por:<span th:text="${blog.autor}"></span></p>
+                            <p th:text="${blog.articulo}">
+                            </p>
+                        </div>
+                        <div class="btn-uno">
+                            <p class="font-weight-bold h5 text-muted"><a th:href="@{gnExpress/entradaBlog(id_blog=${blog.id})}">ver mas....</a></p>
+                        </div>
+                    </div>
+
+                </div>              
+
+                
+
+                <div class="btn-todos">
+                    <p class="font-weight-bold h3 text-muted"><a th:href="@{gnExpress/blog_todos}">ver todas....</a></p>
+                </div>
+
+            </div>
+    </section>
+
+
+    <footer class="footerWidth ">
+        <div class="container-fluid">
+            <div class="footer-align font-italic ">
+
+                <div class="contacto-footer">
+                    <div class="encabezado-footer ">
+                        <p class="text-uppercase ">contacto directo EquipoTuObra</p>
+                    </div>
+                    <div class="datos-gn ">
+                        <p><i class="icon-mail"></i>:  <span th:text="${gnExpress.correo}"></span></p>                        
+                        <p><i class="icon-volume-control-phone"></i>:  <span th:text="${gnExpress.telefono}"></span></p>
+                        <p><i class="icon-mobile"></i>:  <span th:text="${gnExpress.movil}"></span></p>
+                    </div>
+                </div>
+
+                <div class="nav-footer">
+                    <nav class="align-nav-footer">
+                        <a class="nav-link" th:href="@{/}" id="Inicio">Inicio</a>
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Servicios
+                          </a>
+                        <div class="dropdown-menu">
+                        
+                              <div th:each="servicio1 : ${serv_gnExpress}">                          
+                                                     
+                        		<a class="dropdown-item" th:href="@{gnExpress/subservicios(id_Servicio=${servicio1.id})}" th:text="${servicio1.nombre}"></a>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                        <a class="nav-link" th:href="@{gnExpress/contacto}" id="Contactanos">Contactanos</a>
+                        <a class="nav-link" th:href="@{gnExpress/blog_todos}" id="anuncios">NuestroBlog</a>
+                        <a class="nav-link" th:href="@{gnExpress/testimoniales}" id="testim">Testimoniales</a>
+                        <a href="#"> <a class="nav-link" href="#" id="Administre">Administre</a></a>
+                    </nav>
+                </div>
+                <div class="last-element">
+                    <div class="logo-footer">
+                        <a href="#">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a th:href="${gnExpress.twitter}">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+
+                    </div>
+
+                    <div class="derechos">
+                        <p class="copyright ">Todos los derechos reservados <span th:text="${fechaFoot}"> </span>&copy; </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js "></script>
+    
+</body>
+
+
+<script>
+
+
+var rating = "[[${testimonial_gnExpress.porcentaje}]]";  //Este es el testimonial 1 recordar lo que hace carousel del index (tienes que sacar el primero y luego del primero hacia adelante)
+
+
+
+for (let i = 0; i < 5; i++) {
+    if (i < rating) {
+        document.getElementById((i + 1) + "estrella2").style.color = "orange";
+
+    } else {
+        document.getElementById((i + 1) + "estrella2").style.color = "black";
+    }
+}
+
+	
+</script>
+
+</html>
+
+
+
+
+

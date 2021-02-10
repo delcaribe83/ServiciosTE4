@@ -1,0 +1,158 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts/base-layout::head"></head>
+
+
+
+<body>
+
+    <div class="wrapper">
+    
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bienvenido <p th:text="${name}"></p></h3>
+            </div>
+
+
+
+            <ul class="lisst-unstyled components">
+                <p>The providers</p>
+                <li>
+                            <a href="#">Inicio</a>
+                        </li>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empresa</a>
+                    <ul class="collapse lisst-unstyled" id="homeSubmenu">
+                        <li>
+                            <a th:href="@{/private/datosEmpresa}">Datos_Empresa</a>
+                        </li>
+                        <li>
+                            <a href="#">Publicidad</a>
+                        </li>
+                        <li>
+                            <a href="#">Social</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Servicios</a>
+                </li>
+                <li>
+                    <a href="#">Sub_Servicios</a>
+                </li>
+                <li>
+                    <a href="#">Blogs</a>
+                </li>
+                <li>
+                    <a href="#">Filtro testimoniales</a>
+                </li>
+
+
+            </ul>
+            <ul class="lisst-unstyled CTAs">
+                <li>
+                    <a href="#" class="download">Gestionar Usuarios</a>
+                </li>
+                <li>
+                
+                <form th:action="@{/logout}" method="post">
+                
+                    <input type="submit" value="cerrar Session">
+                    
+                </form>    
+                
+                </li>
+            </ul>
+        </nav>    
+
+        <div class="content">
+        
+         <div th:replace="layouts/base-layout :: navbar"></div>
+            
+            
+            <div class="cuerpo">
+                
+              
+     <div class="table-sm table-hover tabla1">      
+        <table> 
+        
+         
+                <tr>         
+        	   
+             <th class="text-muted">  <h5>Clientes registrados: </h5>   </th>
+             <td th:text="${total}"></th>
+              
+         		</tr>       		
+         	
+         
+         	<tr>
+         
+        	 <th class="text-muted">  <h5>Clientes Contactados: </h5>   </th>         	
+            <td th:text="${totalcontactados}"> </td>
+           
+         </tr>       
+         <tr>
+         
+        	 <th class="text-muted">  <h5>No Contactados: </h5>   </th>         	
+            <td th:text="${total-totalcontactados}" style="color: red;"> </td>
+           
+         </tr>     
+       </table>       
+   </div>           
+           <br><br>
+      
+      
+     <div class="container">
+    <h5>Clientes no contactados</h5> 
+     <div>   
+         <table border="1" class="table-hover table-striped table-bordered table-sm ">   
+          <thead class="thead-dark">
+                <tr>     
+        	   
+             <th> Nombre</th>
+             <th> Email</th>     
+             <th> Telefono</th>     
+             <th> Mensaje</th> 
+              <th> Fecha contacto</th> 
+             <th> Actualizar</th> 
+             <th> Eliminar</th>     
+             
+              
+         		</tr>       		
+         	</thead>
+         
+         	<tr th:each="total : ${total2}">        
+        	
+            <td th:text="${total.nombre}"></td>
+            <td th:text="${total.correo}"></td>
+            <td th:text="${total.telefono}"></td>
+            <td th:text="${total.msje}"></td>
+            <td th:text="${total.fecha}"></td>
+            <td><a th:href="@{/private/datosEmpresa}"><i class="icon-edit"></i></a></td>
+            <td><a th:href="@{/private/datosEmpresa}"><i class="icon-cancel"></i></a></td>
+           
+         </tr>       
+          
+       </table>    
+       
+       </div>      
+           </div>   
+                
+            </div>
+
+        </div>
+    </div>
+
+
+
+   
+
+ <div th:replace="layouts/base-layout :: script"></div>
+
+
+
+</body>
+
+
+</html>

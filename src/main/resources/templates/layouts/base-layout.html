@@ -1,0 +1,168 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/styleSidebar.css}"/>
+    <link rel="stylesheet" th:href="@{/css/fontello.css}"/>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+
+
+    <title>Administre Sitio EquipoTuObra</title>
+    
+</head>
+
+
+
+<body>
+
+
+    <div th:fragment="sidebar">
+    
+      <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bienvenido <p th:text="${name}"><p/></h3>
+            </div>
+
+
+
+            <ul class="lisst-unstyled components">
+                <p>The providers</p>
+                <li>
+                            <a href="#">Inicio</a>
+                        </li>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empresa</a>
+                    <ul class="collapse lisst-unstyled" id="homeSubmenu">
+                        <li>
+                            <a th:href="@{/private/datosEmpresa}">Datos_Empresa</a>
+                        </li>
+                        <li>
+                            <a href="#">Publicidad</a>
+                        </li>
+                        <li>
+                            <a href="#">Social</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Servicios</a>
+                </li>
+                <li>
+                    <a href="#">Sub_Servicios</a>
+                </li>
+                <li>
+                    <a href="#">Blogs</a>
+                </li>
+                <li>
+                    <a href="#">Filtro testimoniales</a>
+                </li>
+
+
+            </ul>
+            <ul class="lisst-unstyled CTAs">
+                <li>
+                    <a href="#" class="download">Gestionar Usuarios</a>
+                </li>
+                <li>
+                    <a href="#" class="article">Cerrar sesion</a>
+                </li>
+            </ul>
+        </nav>    
+    
+    </div>
+    
+    
+    
+    
+    <div th:fragment="navbar" class="navegacion">
+    
+    	<nav class="navbar navbar-expand-lg">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fa fa-align-left"></i>   
+                    <span>Menu</span>
+               </button>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="toggle-
+                navigation">               
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item-active">
+                            <a class="nav-link" th:href="@{/}" id="Inicio"> Inicio <span class="sr-only">(current)</span></a>
+                        </li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <b>SERVICIOS</b>
+
+						</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+								<div th:each="servicio1 : ${serv_gnExpress}">
+
+									<a class="dropdown-item" th:href="@{/gnExpress/subservicios(id_Servicio=${servicio1.id})}" th:text="${servicio1.nombre}">
+									</a>
+								</div>
+
+							</div>
+							</li>
+							
+							
+							
+						<li class="nav-item">
+                        <a class="nav-link" th:href="@{/gnExpress/contacto}" id="contactos">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" th:href="@{/gnExpress/blog_todos}" id="anuncios">NuestroBlog</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" th:href="@{/gnExpress/testimoniales}" id="testim">Testimoniales</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>   
+    
+ 	</div>
+ 	
+ 	<div th:fragment="script">
+ 	 <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+
+            });
+
+        });
+    </script>
+ 	
+ 	</div>
+
+	</body>
+
+</html>

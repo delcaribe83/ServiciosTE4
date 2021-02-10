@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <title>contacto gnExpress</title>
+    
+     <!--   Normalizando Documento para que se vea en todo dispositivo-->
+    <link rel="stylesheet" th:href="@{/css/normalize.css}"/>
+  	<link rel="stylesheet" th:href="@{/css/stiles.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontello.css}"/>
+
+    <!--   Estableciendo fuentes a todo el documento (buscado en google fonts)-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <!--  font-family: 'Titillium Web', sans-serif;  -->
+
+    
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <!-- <img src="img/logo1.png" class="logo-brand" alt="logotipo de bienes raíces"> -->
+            <div class="logoExpress">
+                <a class="navbar-brand" href="/"> <img th:src="@{/img/logo.png}" class="logo-brand" alt="logotipo de bienes raíces"/> </a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <ion-icon name="menu-outline"></ion-icon>
+             </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/" id="Inicio">Inicio</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <b><b>SERVICIOS</b></b>
+             		 </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           
+                            <div th:each="servicio1 : ${serv_gnExpress}">                          
+                                                     
+                            <a class="dropdown-item" th:href="@{subservicios(id_Servicio=${servicio1.id}, nombre_Servicio=${servicio1.nombre})}"><p th:text="${servicio1.nombre}"></p></a>
+                            
+                            </div>
+                            
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                       <a class="nav-link" th:href="@{contacto}">Contactanos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{blog_todos}" id="anuncios">NuestroBlog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{testimoniales}" id="anuncios">Testimoniales</a>
+                    </li>                    
+
+                    <li class="nav-item">
+                          <a class="nav-link" href="#" id="administre">administre</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <header>
+        <div class="site-header-contacto">
+
+        </div>
+    </header>
+
+
+    <main class=" borde-inferior marginbotton-add margin-top-negativo">
+
+        <div class="contenedor-reducido3" style="margin: 0 auto;"><br>
+            <div class="card marginbotton-add">
+                <div class="card-header">
+                    <div class="encabezado-centro">
+
+
+
+                        <h3 class="card-title font-italic" style="font-size: 2.8rem;">Iniciar Sesión</h3><br>
+
+                    </div>
+                </div>
+                
+                
+                <div class="card-body">
+                
+                  <div th:if="${param.errors}" class="alert alert-danger mb-3">Credenciales incorrectas</div>
+                
+                    <div class="form-contacto">
+                    
+                 
+                    	<form th:action="@{/gnExpress/login-post}" method="post">
+						
+					<fieldset>
+							
+								<div class="row form-group">
+                                <label class="col-md-2" style="font-size: 2rem;">usuario</label>
+                                <input type="text" name="username" class="form-control col-md-9"/>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-md-2" style="font-size: 2rem;">Password</label>
+                                <input type="password" name="password" class="form-control col-md-9" />
+                            </div>
+                            
+                            <div class="row form-group">
+
+                                <input type="submit" class="btn btn-success btn-black col-md-2 offset-5" value="continuar" />
+
+                            </div>
+
+                            
+					</fieldset>
+								
+					
+								
+								
+						
+						</form>
+
+						
+
+
+					</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+    
+
+	<script th:src="@{/js/formulario.js}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js "></script>
+</body>
+
+				
+
+</html>
